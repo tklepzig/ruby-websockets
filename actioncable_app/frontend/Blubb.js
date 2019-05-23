@@ -1,10 +1,10 @@
 import React from "react";
 
-export const Blubb = () => {
+export const Blubb = props => {
   const [messages, setMessages] = React.useState([]);
 
   React.useEffect(() => {
-    App.cable.subscriptions.create(
+    props.CableApp.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => setMessages(messages => messages.concat(data.message))

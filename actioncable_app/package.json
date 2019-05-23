@@ -5,6 +5,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "actioncable": "^5.2.3",
     "babel-loader": "^8.0.6",
     "react": "^16.8.6",
     "react-actioncable-provider": "^2.0.0",

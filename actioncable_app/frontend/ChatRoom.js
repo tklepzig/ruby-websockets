@@ -10,7 +10,7 @@ class ChatRoom extends React.Component {
   }
 
   componentDidMount() {
-    App.cable.subscriptions.create(
+    this.props.CableApp.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => {
@@ -42,8 +42,8 @@ class ChatRoom extends React.Component {
       <div className="chatroom-container">
         <div>ChatRoom</div>
         <div className="message-list">{messageList}</div>
-        <MessageForm />
-        <Blubb />
+        <MessageForm CableApp={this.props.CableApp} />
+        <Blubb CableApp={this.props.CableApp} />
       </div>
     );
   }
