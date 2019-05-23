@@ -13,6 +13,8 @@ gem install bundler
 
 # Links
 
+https://medium.com/@benpong89/action-cable-and-react-9a00be5e391b
+
 https://itnext.io/actioncable-authentication-in-a-token-based-rails-api-f9cc4b8bf560
 
 https://medium.com/@wbdana/integrating-action-cable-with-react-the-hacky-way-240db6dca8
