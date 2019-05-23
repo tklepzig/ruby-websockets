@@ -81,284 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./frontend/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./frontend/Blubb.js":
-/*!***************************!*\
-  !*** ./frontend/Blubb.js ***!
-  \***************************/
-/*! exports provided: Blubb */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Blubb", function() { return Blubb; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-var Blubb = function Blubb(props) {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState([]),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      messages = _React$useState2[0],
-      setMessages = _React$useState2[1];
-
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
-    props.CableApp.cable.subscriptions.create({
-      channel: "ChatChannel"
-    }, {
-      received: function received(data) {
-        return setMessages(function (messages) {
-          return messages.concat(data.message);
-        });
-      }
-    });
-  }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, messages.join(","));
-};
-
-/***/ }),
-
-/***/ "./frontend/ChatRoom.js":
-/*!******************************!*\
-  !*** ./frontend/ChatRoom.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MessageForm_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageForm.js */ "./frontend/MessageForm.js");
-/* harmony import */ var _Blubb_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Blubb.js */ "./frontend/Blubb.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var ChatRoom =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ChatRoom, _React$Component);
-
-  function ChatRoom(props) {
-    var _this;
-
-    _classCallCheck(this, ChatRoom);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatRoom).call(this, props));
-    _this.state = {
-      messages: []
-    };
-    _this.bottom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
-    return _this;
-  }
-
-  _createClass(ChatRoom, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.props.CableApp.cable.subscriptions.create({
-        channel: "ChatChannel"
-      }, {
-        received: function received(data) {
-          _this2.setState({
-            messages: _this2.state.messages.concat(data.message)
-          });
-        },
-        speak: function speak(data) {
-          return this.perform("speak", data);
-        }
-      });
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.bottom.current.scrollIntoView();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var messageList = this.state.messages.map(function (message) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: message.id
-        }, message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          ref: _this3.bottom
-        }));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chatroom-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "message-list"
-      }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MessageForm_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        CableApp: this.props.CableApp
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Blubb_js__WEBPACK_IMPORTED_MODULE_2__["Blubb"], {
-        CableApp: this.props.CableApp
-      }));
-    }
-  }]);
-
-  return ChatRoom;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (ChatRoom);
-
-/***/ }),
-
-/***/ "./frontend/MessageForm.js":
-/*!*********************************!*\
-  !*** ./frontend/MessageForm.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var MessageForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(MessageForm, _React$Component);
-
-  function MessageForm(props) {
-    var _this;
-
-    _classCallCheck(this, MessageForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageForm).call(this, props));
-    _this.state = {
-      body: ""
-    };
-    return _this;
-  }
-
-  _createClass(MessageForm, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
-
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.CableApp.cable.subscriptions.subscriptions[0].speak({
-        message: this.state.body
-      });
-      this.setState({
-        body: ""
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit.bind(this)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.body,
-        onChange: this.update("body"),
-        placeholder: "Type message here"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit"
-      })));
-    }
-  }]);
-
-  return MessageForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (MessageForm);
-
-/***/ }),
-
-/***/ "./frontend/index.js":
-/*!***************************!*\
-  !*** ./frontend/index.js ***!
-  \***************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ChatRoom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatRoom.js */ "./frontend/ChatRoom.js");
-
-
-
-
-var b = __webpack_require__(/*! actioncable */ "./node_modules/actioncable/lib/assets/compiled/action_cable.js");
-
-var CableApp = {};
-CableApp.cable = b.createConsumer("ws://localhost:8081/cable");
-document.addEventListener("DOMContentLoaded", function () {
-  var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatRoom_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    CableApp: CableApp
-  }), root);
-});
-
-/***/ }),
 
 /***/ "./node_modules/actioncable/lib/assets/compiled/action_cable.js":
 /*!**********************************************************************!*\
@@ -25690,6 +25416,280 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "./src/Blubb.js":
+/*!**********************!*\
+  !*** ./src/Blubb.js ***!
+  \**********************/
+/*! exports provided: Blubb */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Blubb", function() { return Blubb; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var Blubb = function Blubb(props) {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      messages = _React$useState2[0],
+      setMessages = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    props.CableApp.cable.subscriptions.create({
+      channel: "ChatChannel"
+    }, {
+      received: function received(data) {
+        return setMessages(function (messages) {
+          return messages.concat(data.message);
+        });
+      }
+    });
+  }, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, messages.join(","));
+};
+
+/***/ }),
+
+/***/ "./src/ChatRoom.js":
+/*!*************************!*\
+  !*** ./src/ChatRoom.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MessageForm_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageForm.js */ "./src/MessageForm.js");
+/* harmony import */ var _Blubb_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Blubb.js */ "./src/Blubb.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ChatRoom =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatRoom, _React$Component);
+
+  function ChatRoom(props) {
+    var _this;
+
+    _classCallCheck(this, ChatRoom);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatRoom).call(this, props));
+    _this.state = {
+      messages: []
+    };
+    _this.bottom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    return _this;
+  }
+
+  _createClass(ChatRoom, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.CableApp.cable.subscriptions.create({
+        channel: "ChatChannel"
+      }, {
+        received: function received(data) {
+          _this2.setState({
+            messages: _this2.state.messages.concat(data.message)
+          });
+        },
+        speak: function speak(data) {
+          return this.perform("speak", data);
+        }
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.bottom.current.scrollIntoView();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var messageList = this.state.messages.map(function (message) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: message.id
+        }, message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          ref: _this3.bottom
+        }));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chatroom-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-list"
+      }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MessageForm_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        CableApp: this.props.CableApp
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Blubb_js__WEBPACK_IMPORTED_MODULE_2__["Blubb"], {
+        CableApp: this.props.CableApp
+      }));
+    }
+  }]);
+
+  return ChatRoom;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ChatRoom);
+
+/***/ }),
+
+/***/ "./src/MessageForm.js":
+/*!****************************!*\
+  !*** ./src/MessageForm.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var MessageForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MessageForm, _React$Component);
+
+  function MessageForm(props) {
+    var _this;
+
+    _classCallCheck(this, MessageForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageForm).call(this, props));
+    _this.state = {
+      body: ""
+    };
+    return _this;
+  }
+
+  _createClass(MessageForm, [{
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.CableApp.cable.subscriptions.subscriptions[0].speak({
+        message: this.state.body
+      });
+      this.setState({
+        body: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit.bind(this)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.body,
+        onChange: this.update("body"),
+        placeholder: "Type message here"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit"
+      })));
+    }
+  }]);
+
+  return MessageForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageForm);
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ChatRoom_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatRoom.js */ "./src/ChatRoom.js");
+
+
+
+
+var b = __webpack_require__(/*! actioncable */ "./node_modules/actioncable/lib/assets/compiled/action_cable.js");
+
+var CableApp = {};
+CableApp.cable = b.createConsumer("ws://localhost:8081/cable");
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.getElementById("root");
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatRoom_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    CableApp: CableApp
+  }), root);
+});
 
 /***/ })
 
